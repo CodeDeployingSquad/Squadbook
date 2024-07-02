@@ -6,9 +6,9 @@ import { Bolt } from "~/lib/icons/Bolt";
 
 const Navbar: React.FC = () => {
   return (
-    <View className="flex-[0.1]  flex-row items-center justify-between">
+    <View className="flex-[0.1]  my-[30px]  flex-row items-center justify-between">
       <View>
-        <Text className="text-xl font-bold">Welcome, Gopal Verma</Text>
+        <Text className="text-xl font-bold">Squadbook</Text>
       </View>
       <View className="flex-row items-center gap-[10px]">
         <ThemeToggle />
