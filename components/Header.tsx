@@ -1,17 +1,26 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Pressable } from "react-native";
 import { Text } from "~/components/ui/text";
 import { LayoutGrid } from "~/lib/icons/Grid";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Navbar: React.FC = () => {
   return (
-    <View className="flex-[0.1]  flex-row items-center justify-between">
-      <View>
-        <Text>Filter</Text>
-      </View>
-      <View>
-        <LayoutGrid className="text-foreground" size={23} strokeWidth={1.25} />
-      </View>
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 20,
+      }}
+    >
+      <Pressable>
+        <Ionicons
+          name="folder-outline"
+          size={20}
+          className="text-black dark:text-white"
+        />
+      </Pressable>
+      <Text className="ml-[4px] text-sm">Folders</Text>
     </View>
   );
 };
