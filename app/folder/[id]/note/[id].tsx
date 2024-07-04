@@ -12,8 +12,8 @@ import { Text } from "~/components/ui/text";
 import MarkdownDisplay from "~/components/MarkdownDisplay";
 import { useColorScheme } from "~/lib/useColorScheme";
 import { getNoteById } from "~/assets/dummy_data";
-import { Ionicons } from "@expo/vector-icons"; // Make sure to install @expo/vector-icons if you haven't already
-import Navbar from "~/components/Navbar";
+import Header from "~/components/Header";
+import { MoveLeft } from "~/lib/icons/MoveLeft";
 
 export default function NoteScreen() {
   const { id } = useLocalSearchParams();
@@ -84,16 +84,18 @@ export default function NoteScreen() {
       }`}
     >
       <View className="flex-1 max-w-3xl w-full mt-[50px]">
-        <View style={styles.header}>
-          <Pressable onPress={() => router.back()} style={styles.backButton}>
-            <Ionicons
-              name="arrow-back"
-              size={20}
-              color={isDarkColorScheme ? "#e0e0e0" : "black"}
-            />
-          </Pressable>
-          <Text className=" text-sm ml-[2px]">{note.title}</Text>
-        </View>
+        <Header
+          leftIcon={
+            <Pressable onPress={() => router.back()}>
+              <MoveLeft
+                className="text-foreground"
+                size={20}
+                strokeWidth={1.5}
+              />
+            </Pressable>
+          }
+          label={note ? note.title : "Note"}
+        />
         <View style={styles.tabsContainer}>
           <Pressable
             onPress={() => setTab("preview")}

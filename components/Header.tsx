@@ -1,28 +1,33 @@
-import React from "react";
-import { View, Pressable } from "react-native";
-import { Text } from "~/components/ui/text";
-import { LayoutGrid } from "~/lib/icons/Grid";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import React, { ReactNode } from "react";
+import { View, Text, Pressable } from "react-native";
 
-const Navbar: React.FC = () => {
+interface HeaderProps {
+  leftIcon?: ReactNode;
+  label: string;
+  rightIcon?: ReactNode;
+}
+
+const Header: React.FC<HeaderProps> = ({ leftIcon, label, rightIcon }) => {
   return (
     <View
       style={{
         flexDirection: "row",
         alignItems: "center",
         marginBottom: 20,
+        justifyContent: "space-between",
       }}
     >
-      <Pressable>
-        <Ionicons
-          name="folder-outline"
-          size={20}
-          className="text-black dark:text-white"
-        />
-      </Pressable>
-      <Text className="ml-[4px] text-sm">Folders</Text>
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        {leftIcon && <Pressable>{leftIcon}</Pressable>}
+        <Text
+          className={`text-foreground ${leftIcon ? "ml-[4px]" : ""} text-sm`}
+        >
+          {label}
+        </Text>
+      </View>
+      {rightIcon && <Pressable>{rightIcon}</Pressable>}
     </View>
   );
 };
 
-export default Navbar;
+export default Header;

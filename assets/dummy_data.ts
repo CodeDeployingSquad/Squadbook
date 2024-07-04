@@ -1,15 +1,4 @@
-export interface Note {
-  id: string;
-  title: string;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface Folder {
-  id: string;
-  name: string;
-}
+import { Note, Folder } from "notes-app-types";
 
 export const folders: Folder[] = [
   { id: "1", name: "Personal" },
