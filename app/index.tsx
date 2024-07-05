@@ -14,6 +14,9 @@ import Header from "~/components/Header";
 import NoteDisplay from "~/components/NoteDisplay";
 import { Link } from "expo-router";
 import { Text } from "~/components/ui/text";
+import { Folder } from "~/lib/icons/Folder";
+import { EllipsisVertical } from "~/lib/icons/Menu";
+import ListRow from "~/components/ListRow";
 
 const folders = [
   { id: "2", name: "Work" },
@@ -30,40 +33,24 @@ export default function Screen() {
     >
       <View className="flex-1 max-w-3xl w-full">
         <Navbar />
-        {/* <Header /> */}
-        {/* <NoteDisplay /> */}
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginBottom: 20,
-          }}
-        >
-          <Pressable>
-            <Ionicons
-              name="folder-outline"
+        <Header
+          leftIcon={
+            <Folder className="text-foreground" size={20} strokeWidth={1.5} />
+          }
+          label="Folders"
+          rightIcon={
+            <EllipsisVertical
+              className="text-foreground"
               size={20}
-              className="text-black dark:text-white"
+              strokeWidth={1.5}
             />
-          </Pressable>
-          <Text className="ml-[4px] text-sm">Folders</Text>
-        </View>
-
+          }
+        />
         <FlatList
           data={folders}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <Link href={`/folder/${item.id}`} asChild>
-              <TouchableOpacity
-                style={{
-                  padding: 10,
-                  borderBottomWidth: 1,
-                  borderBottomColor: "#333",
-                }}
-              >
-                <Text>{item.name}</Text>
-              </TouchableOpacity>
-            </Link>
+            <ListRow href={`/folder/${item.id}`} Label={item.name} />
           )}
         />
       </View>
